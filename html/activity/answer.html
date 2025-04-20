@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环保知识小问答</title>
+    <link rel="stylesheet" href="/css/community/answer.css">
+    <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+    <style>
+        #result {
+            margin-top: 10px;
+        }
+
+        #end-screen {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box_body">
+        <div class="box_header">
+            <h1>环保知识小问答</h1>
+        </div>
+        <div class="box_content">
+            <!-- <p>粽子叶、扇贝壳属于有害垃圾</p>
+            <input type="radio" name="right" checked>对
+            <input type="radio" name="wrong">错 -->
+
+            <!-- test -->
+            <div id="question1" class="question active">
+                <div class="content">
+                    <h2>问题 1: 粽子叶、扇贝壳属于有害垃圾</h2>
+                    <div class="anniu">
+                        <label><input type="radio" name="q1" value="true">对</label>
+                        <label><input type="radio" name="q1" value="false">错</label>
+                    </div>
+                    <button onclick="checkAnswer(1)">提交</button>
+                    <p id="result1"></p>
+                </div>
+            </div>
+
+            <div id="question2" class="question active">
+                <div class="content">
+                    <h2>问题 2: 汽车尾气能够引起光化学烟雾</h2>
+                    <div class="anniu">
+                        <label><input type="radio" name="q2" value="true">对</label>
+                        <label><input type="radio" name="q2" value="false">错</label>
+                    </div>
+                    <button onclick="checkAnswer(2)">提交</button>
+                    <p id="result2"></p>
+                </div>
+            </div>
+
+            <div id="question3" class="question active">
+                <div class="content">
+                    <h2>问题 3: 植物吸收氧气产生二氧化碳等气体</h2>
+                    <div class="anniu">
+                        <label><input type="radio" name="q3" value="true">对</label>
+                        <label><input type="radio" name="q3" value="false">错</label>
+                    </div>
+                    <button onclick="checkAnswer(3)">提交</button>
+                    <p id="result3"></p>
+                </div>
+            </div>
+
+            <div id="question4" class="question active">
+                <div class="content">
+                    <h2>问题 4: 只有冬天有雾霾</h2>
+                    <div class="anniu">
+                        <label><input type="radio" name="q4" value="true">对</label>
+                        <label><input type="radio" name="q4" value="false">错</label>
+                    </div>
+                    <button onclick="checkAnswer(4)">提交</button>
+                    <p id="result4"></p>
+                </div>
+            </div>
+
+            <div id="question5" class="question active">
+                <div class="content">
+                    <h2>问题 5: 氧气不是温室气体</h2>
+                    <div class="anniu">
+                        <label><input type="radio" name="q5" value="true">对</label>
+                        <label><input type="radio" name="q5" value="false">错</label>
+                    </div>
+                    <button onclick="checkAnswer(5)">提交</button>
+                    <p id="result5"></p>
+                </div>
+            </div>
+
+
+            <!-- 结束界面 -->
+
+            <div id="end-screen" class="end">
+                <h2>答题完成!</h2>
+                <button onclick="restartQuiz()">返回第一题</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer"></div>
+    </footer>
+
+    <script>
+        const questions = [
+            { question: "粽子叶、扇贝壳属于有害垃圾", answer: "false", id: 1 },
+            { question: "汽车尾气能够引起光化学烟雾", answer: "true", id: 2 },
+            { question: "植物吸收氧气产生二氧化碳等气体", answer: "false", id: 3 },
+            { question: "只有冬天有雾霾", answer: "false", id: 4 },
+            { question: "氧气不是温室气体", answer: "true", id: 5 },
+            // Add more questions here
+        ];
+
+        let currentQuestion = 0;
+
+        function showQuestion(index) {
+            const allQuestions = document.querySelectorAll('.question');
+            allQuestions.forEach((question, i) => {
+                question.classList.remove('active');
+            });
+            const current = document.getElementById(`question${index + 1}`);
+            current.classList.add('active');
+        }
+
+        function checkAnswer(questionNumber) {
+            const question = questions[questionNumber - 1];
+            const answers = document.getElementsByName('q' + questionNumber);
+            const result = document.getElementById('result' + questionNumber);
+            let userAnswer = '';
+
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i].checked) {
+                    userAnswer = answers[i].value;
+                    break;
+                }
+            }
+
+            if (userAnswer === question.answer) {
+                result.innerHTML = "回答正确!";
+                result.style.color = "green";
+            } else {
+                result.innerHTML = "回答错误TT";
+                result.style.color = "red";
+            }
+
+            //转跳到下一题
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion(currentQuestion);
+                } else {
+                    // End of quiz
+                    showEndScreen();
+                    // alert("答题结束!");
+                }
+            }, 1000);//设置一个1.5秒的延迟
+        }
+
+        function showEndScreen() {
+            const endScreen = document.getElementById('end-screen');
+            endScreen.style.display = 'block';
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            const endScreen = document.getElementById('end-screen');
+            endScreen.style.display = 'none';
+            showQuestion(currentQuestion);
+        }
+        // Initialize the quiz
+        showQuestion(currentQuestion);
+    </script>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const footer = doc.querySelector('.footer');
+
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+</body>
+
+</html>

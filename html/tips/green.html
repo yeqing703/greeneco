@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绿色出行</title>
+    <link rel="stylesheet" href="/css/tips/green.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/data.js"></script>
+    <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <strong>
+        <p style="font-size: 8ch;text-align: center;color: white;line-height: 2.5;">绿色出行</p>
+    </strong>
+    <div class="box_body" id="top">
+        <strong>
+            <p class="title" id="section1">碳排放排行榜</p>
+        </strong>
+        <div class="content">
+            <div class="box01">
+                <!-- 排行榜 -->
+                <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+                <script language="JavaScript">
+                    $(document).ready(function () {
+                        var data = {
+                            table: 'datatable'
+                        };
+                        var chart = {
+                            type: 'column'
+                        };
+                        var title = {
+                            text: '出行方式碳排放排行榜',
+                        };
+                        var yAxis = {
+                            allowDecimals: false,
+                            title: {
+                                text: '碳排放占比 (%)'
+                            }
+                        };
+                        var tooltip = {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + '%';
+                            }
+                        };
+                        var credits = {
+                            enabled: false // 隐藏脚注
+                        };
+
+                        var json = {};
+                        json.chart = chart;
+                        json.title = title;
+                        json.data = data;
+                        json.yAxis = yAxis;
+                        json.credits = credits;
+                        json.tooltip = tooltip;
+                        $('#container').highcharts(json);
+                    });
+
+                </script>
+                <table id="datatable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>出行方式</th>
+                            <th>碳排放占比 (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>小汽车</th>
+                            <td>88.44</td>
+                        </tr>
+                        <tr>
+                            <th>地铁</th>
+                            <td>6.49</td>
+                        </tr>
+                        <tr>
+                            <th>公交车</th>
+                            <td>5.06</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="box02">
+                <div class="gainian">
+                    <h2>碳排放的概念</h2>
+                    <p style="text-indent: 2em;">
+                        碳排放量是指在生产、运输、使用及回收某产品时所产生的温室气体排放量。而动态的碳排放量，则是指每单位货品累积排放的温室气体量，同一产品的各个批次之间会有不同的动态碳排放量。</p><br>
+                    <h2>城市客运交通碳排放</h2>
+                    <h3>总碳排放</h3>
+                    <p style="text-indent: 2em;">以2018 年为计算基年，全国城市客运碳排放总量为 3.6 亿吨，其中小汽车出行占比 88.44%，地铁出行占比 6.49%，公交车出行占比
+                        5.06%。</p>
+                    <p style="text-indent: 2em;">城市客运碳排放中绝大部分来自汽油，占比 为 94.73%， 电 占 比为 4.06%，柴油占比为1.12%，天然气占比为0.08%。</p>
+                    <br>
+                    <h3>人均碳排放</h3>
+                    <p style="text-indent: 2em;">根据计算结果，我国居民城市客运人均碳排放在 0.28 吨 /
+                        年。根据统计结果折算，我国城市居民人均生活碳排放总量（包括居民生活和商业用能以及客运交通）为 1.05 吨 / 年。交通出行碳排放占居民生活排碳很大一部分，为26.67%。</p>
+                    <p style="text-indent: 2em;">绝大部分城市居民出行碳排放在 0.19—0.39吨 / 年之间。部分城市居民出行碳排放达到 0.45 吨 /
+                        年以上，反映了上述城市交通结构或者城市空间结构相对不合理，大部分居民出行采用了长距离、高碳强度的出行方式。</p>
+                </div>
+            </div>
+        </div>
+        <strong>
+            <p class="title" id="section2">绿色出行方式</p>
+        </strong>
+        <div class="content">
+            <div class="box01">
+                <div class="icon">
+                    <img src="/img/tips/detail/greentravel/walk.png" alt="步行">
+                </div>
+                <div class="icon">
+                    <img src="/img/tips/detail/greentravel/bike.png" alt="自行车">
+                </div>
+                <div class="icon">
+                    <img src="/img/tips/detail/greentravel/bus.png" alt="公交车">
+                </div>
+                <div class="icon">
+                    <img src="/img/tips/detail/greentravel/car.png" alt="汽车">
+                </div>
+            </div>
+            <div class="box02">
+                <div class="gainian">
+                    <br>
+                    <h2>绿色出行的概念</h2><br>
+                    <p style="text-indent: 2em;">
+                        根据交通运输部和国家发展改革委印发的《绿色出行创建行动方案》相关定义，绿色出行是城市客运交通的重要组成部分，是指采用城市轨道交通、公共汽电车、自行车和步行等对环境影响较小的交通出行方式。
+                    </p><br>
+                    <h2>绿色出行的主要实施方式</h2><br>
+                    <li>减少个人机动车辆的使用，尤其是减少个人高污染高排放车辆的使用；</li><br>
+                    <li>提倡发展慢行系统，包括步行和自行车等；</li><br>
+                    <li>提高公共交通在出行中的比例；</li><br>
+                    <li>提倡使用清洁干净的能源和车辆等。</li><br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <p style="color: rgb(121, 121, 121);padding: 0 20px;">*数据来自《中国城市绿色出行及其碳排放分析报告》</p>
+        <p style="color: rgb(121, 121, 121);padding: 0 20px;">*数据来自百度百科</p>
+    </div>
+    <div class="back_button"><a href="#top" class="iconfont icon-arrowTop"></a></div>
+    
+    <footer>
+        <div class="footer">
+            <div class="list"></div>
+    </footer>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const footer = doc.querySelector('.footer');
+
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+</body>
+
+</html>

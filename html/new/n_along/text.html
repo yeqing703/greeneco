@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章</title>
+    <link rel="stylesheet" href="/css/new/text.css">
+    <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+</head>
+
+<body>
+    <section class="banner">
+        <div class="banner-item" style="--i:0"></div>
+        <div class="banner-item" style="--i:1"></div>
+        <div class="banner-item" style="--i:2"></div>
+        <div class="banner-item" style="--i:3"></div>
+        <div class="banner-item" style="--i:4"></div>
+    </section>
+    <!--文章-->
+    <div class="wrapA">
+        <div class="top">
+            <div class="box">
+                <div class="title-box">
+                    <div class="title-big">文章</div>
+                    <div class="title">
+                        <button onclick="btn()">环境新闻</button>
+                    </div>
+                    <div class="title">
+                        <button onclick="btnproduct()">环保政策与行动</button>
+                    </div>
+                    <div class="title">
+                        <button onclick="btnview()">可持续产品与服务</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="iframe-container">
+                <!-- 内联框架 -->
+                <iframe id="iframe" src="./hjnews.html" frameborder="0"></iframe>
+            </div>
+            <script>
+                function btn() {
+                    document.getElementById('iframe').src = "hjnews.html";
+                }
+                function btnproduct() {
+                    document.getElementById('iframe').src = "zcnews.html";
+                }
+                function btnview() {
+                    document.getElementById('iframe').src = "cpnews.html";
+                }
+            </script>
+        </div>
+        <!--<div class="page">
+            <ul class="page-box">
+                <li class="iconfont icon-icon_zuo"></li>
+                <li class="page-item">
+                    <a href="#nav-video-one" title="1" class="cur">1</a>
+                </li>
+                <li class="page-item">
+                    <a href="#nav-video-two" onclick="getpage($(this));return false;">2</a>
+                </li>
+                <li class="page-item">
+                    <a href="#nav-video-three" onclick="getpage($(this));return false;">3</a>
+                </li>
+                <li class="page-item">
+                    ...
+                </li>
+                <li class="iconfont icon-dibudaohanglan-"></li>
+            </ul>
+        </div>-->
+        <div class="search">
+            <style>
+                .icon-a {
+                    width: 80px;
+                    height: 80px;
+                    vertical-align: -0.15em;
+                    fill: currentColor;
+                    overflow: hidden;
+                }
+            </style>
+            <script src="./font_4709138_zvulj9wvx7/iconfont.js"></script>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const bannerItems = document.querySelectorAll('.banner-item');
+
+                bannerItems.forEach(item => {
+                    item.addEventListener('mouseenter', function () {
+                        // 将所有其他项的背景变为灰色
+                        bannerItems.forEach(banner => {
+                            if (banner !== item) {
+                                banner.classList.add('gray-bg');
+                            }
+                        });
+                        // 移除当前项的灰色背景
+                        this.classList.remove('gray-bg');
+                        // 放大当前项
+                        this.style.transform = 'scale(1.05)';
+                    });
+
+                    item.addEventListener('mouseleave', function () {
+                        // 移除所有项的灰色背景
+                        bannerItems.forEach(banner => {
+                            banner.classList.remove('gray-bg');
+                        });
+                        // 恢复当前项的大小
+                        this.style.transform = 'scale(1)';
+                    });
+                });
+            });
+        </script>
+    </div>
+    <div class="back_button"><a href="#top" class="iconfont icon-arrowTop"></a></div>
+
+    <footer>
+        <div class="footer"></div>
+    </footer>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const footer = doc.querySelector('.footer');
+
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,533 @@
+@import '../css/reset.css';
+@import '../css/community.css';
+
+html {
+    scroll-behavior: auto;
+}
+
+.wrap-body {
+    font-size: 1.6rem;
+    width: 100%;
+    max-width: 1190px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 150px auto;
+}
+
+
+.img3 {
+    object-fit: cover;
+}
+
+.carousel {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.carousel img.img3 {
+    width: 30.33%;
+    height: 100%;
+    display: inline-block;
+    transition: transform 0.5s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.cart-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+    gap: 30px;
+}
+
+.items {
+    max-width: 700px;
+    min-width: 300px;
+    flex: 2;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+
+
+.carthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    font-size: 22px;
+    color: var(--main-color);
+}
+
+.item {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+
+.content {
+    flex: 1;
+}
+
+.name,
+.price,
+.sum {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.price {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 30px;
+    height: 30px;
+    background-color: var(--light);
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quantity-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.remove {
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cart_sum {
+    min-width: 300px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.sum {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.sum {
+    margin: 20px 0;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.submt {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--main-color);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submt:hover {
+    background-color: var(--seven-color);
+}
+
+.back_shopping {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item>div {
+    flex: 1;
+}
+
+/* 支付弹窗样式 */
+.payment-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.payment-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.payment-modal {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.payment-overlay.active .payment-modal {
+    transform: translateY(0);
+}
+
+.payment-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.payment-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+}
+
+.payment-body {
+    padding: 20px;
+}
+
+.payment-amount {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.amount-label {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.amount-value {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.payment-methods {
+    margin-bottom: 20px;
+}
+
+.method-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.payment-method:hover {
+    border-color: var(--primary);
+}
+
+.payment-method.active {
+    border-color: var(--primary);
+    background-color: rgba(255, 107, 107, 0.05);
+}
+
+.payment-method input {
+    width: auto;
+    margin-right: 15px;
+}
+
+.payment-method label {
+    flex: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.method-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.method-name {
+    font-weight: 500;
+}
+
+.payment-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+    background-color: #ff5252;
+}
+
+.confirm-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+    }
+
+    .product-image {
+        max-width: 100%;
+        height: 300px;
+    }
+
+    .payment-modal {
+        width: 95%;
+    }
+}
+
+
+/* 轮播 */
+.top {
+    position: relative;
+    background-color: #b9b9b9;
+    height: 70vh;
+    text-align: center;
+    margin-bottom: var(--bm-height);
+    overflow: hidden;
+}
+
+.swiper_shop {
+    list-style: none;
+    position: relative;
+    display: flex;
+    background-color: #fff;
+    z-index: 98;
+}
+
+.swiper_shop img {
+    width: 100%;
+    height: auto;
+    /* object-fit:cover; */
+}
+
+@media(max-width:100%) {
+
+    .swiper_shop,
+    .top {
+        width: 100%;
+        height: 50vh;
+    }
+
+    @keyframes slider {
+        to {
+            transform: translateX(calc(-100%*5));
+        }
+    }
+
+    #page li img {
+        background-size: 100%;
+    }
+
+    #page li img:nth-child(1) {
+        transform: translateZ(-100%/4) rotateX(180deg);
+    }
+
+    #page li img:nth-child(2) {
+        transform: translateY(100%/4) rotateX(-90deg);
+    }
+
+    #page li img:nth-child(3) {
+        transform: translateY(-100%/4) rotateX(90deg);
+    }
+
+    #page li img:nth-child(4) {
+        transform: translateZ(100%/4);
+    }
+}
+
+
+/* 移动端 */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 20px;
+    }
+
+    .top {
+        width: 100%;
+        height: 100px;
+    }
+
+    .top::before {
+        background-image: -webkit-linear-gradient(0deg, #007931, #6fb58c);
+        height: 100px;
+        content: '购物车';
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper_shop {
+        display: none;
+    }
+
+    .wrap-body {
+        /* width: 100%; */
+        float: none;
+        margin: 20px 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+
+    .cart-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 20px 0;
+        gap: 10px;
+    }
+
+    .items,
+    .cart_sum {
+        width: 100%;
+    }
+
+    .sum,
+    .back_shopping,
+    .name,
+    .price {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+
+
+    dt,
+    dd,
+    .span-txt,
+    .banquan,
+    .name-banquan {
+        font-size: 12px;
+    }
+
+    .footer {
+        margin-top: 30px;
+    }
+}
+

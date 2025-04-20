@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <link rel="stylesheet" href="/css/cart.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+
+    <div class="top">
+        <ul class="swiper_shop">
+            <li><a href="javascript:;"><img src="/img/shop/1.png" alt="">1</a></li>
+            <li><a href="javascript:;"><img src="/img/shop/2.png" alt="">2</a></li>
+            <li><a href="javascript:;"><img src="/img/shop/3.jpg" alt="">3</a></li>
+            <li><a href="javascript:;"><img src="/img/shop/4.png" alt="">4</a></li>
+        </ul>
+    </div>
+
+    <!-- 内容 -->
+    <div class="wrap-body">
+        <div class="container">
+            <div class="cart-container">
+                <div class="items">
+                    <div class="carthead">
+                        <h2>购物车</h2>
+                        <span id="cart-count">0件商品</span>
+                    </div>
+                    <div id="cart-items" class="scroll-container"></div>
+                </div>
+
+                <!-- 右侧结算区域 -->
+                <div class="cart_sum">
+                    <h2>订单</h2>
+                    <div class="sum">
+                        <span>商品总价</span>
+                        <span id="total">¥0.00</span>
+                    </div>
+                    <div class="sum">
+                        <span>运费</span>
+                        <span id="freight">¥10.00</span>
+                    </div>
+                    <div class="sum">
+                        <span>优惠折扣</span>
+                        <span id="discount">¥5.00</span>
+                    </div>
+                    <div class="sum sum_price">
+                        <span>总计</span>
+                        <span id="subtotal">¥0.00</span>
+                    </div>
+                    <button class="submt" id="checkout">去结算</button>
+                    <a href="/html/shop.html" class="back_shopping">返回商城</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer"></div>
+    </footer>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const footer = doc.querySelector('.footer');
+
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+
+    <script src="/js/shop.js"></script>
+    <script src="/js/cart.js"></script>
+
+
+</body>
+
+</html>

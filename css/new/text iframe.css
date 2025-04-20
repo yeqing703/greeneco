@@ -1,0 +1,94 @@
+@import '/css/reset.css';
+
+.news {
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.title {
+    font-size: 32px;
+    background: linear-gradient(135deg, var(--second-color), var(--five-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #3498db, transparent);
+}
+
+.news ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-item {
+    padding: 15px;
+    margin: 15px 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.news-item:hover {
+    transform: translateX(10px);
+    background: #fff;
+}
+
+.news-item .txt {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.news-item a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    padding-left: 10px;
+}
+
+.news-item a::before {
+    content: "•";
+    color: var(--five-color);
+    position: absolute;
+    left: -10px;
+    font-size: 20px;
+}
+
+.news-item a:hover {
+    color: var(--main-color);
+}
+
+.news-item span {
+    background: var(--five-color);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 15px;
+    flex-shrink: 0;
+}

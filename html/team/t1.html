@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+    <link rel="stylesheet" href="/css/team/t1.css">
+    <title>小组成员介绍</title>
+
+</head>
+
+<body>
+    <div class="header">
+        <h1>小组成员介绍</h1>
+    </div>
+    <div class="nav-cont team">
+        <div class="team-item">
+            <div class="team-imgs">
+                <div class="team-border"></div>
+                <div class="team-img" style="--url1:url(/img/t1-3.jpg);--url2:url(1.jpg)"></div>
+            </div>
+            <h3>欧柏睿</h3>
+            <p>组员</p>
+            <p>广州新华学院</p>
+            <p>数字媒体技术</p>
+            <p>爱好：音乐、旅游</p>
+        </div>
+        <div class="team-item">
+            <div class="team-imgs">
+                <div class="team-border"></div>
+                <div class="team-img" style="--url1:url(/img/t1-2.jpg);--url2:url(2.jpg)"></div>
+            </div>
+            <h3>叶晴</h3>
+            <p>组长</p>
+            <p>广州新华学院</p>
+            <p>数字媒体技术</p>
+            <p>爱好：阅读、旅游</p>
+        </div>
+        <div class="team-item">
+            <div class="team-imgs">
+                <div class="team-border"></div>
+                <div class="team-img" style="--url1:url(/img/t1-1.jpg);--url2:url(1.jpg)"></div>
+            </div>
+            <h3>蔡佩扬</h3>
+            <p>组员</p>
+            <p>广州新华学院</p>
+            <p>数字媒体技术</p>
+            <p>爱好：音乐、电影</p>
+        </div>
+    </div>
+    <footer>
+        <div class="footer"></div>
+    </footer>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const footer = doc.querySelector('.footer');
+
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+</body>
+
+</html>

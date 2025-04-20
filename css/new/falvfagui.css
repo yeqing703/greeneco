@@ -1,0 +1,38 @@
+@import '/css/reset.css';
+
+p {
+    color: var(--s-txt-color);
+}
+
+a {
+    display: block;
+    float: right;
+    color: var(--e-txt-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #468f57;
+}
+
+
+.item {
+    color: #000;
+    border-bottom: 1px solid #0d0d0d;
+    margin: 70px;
+    line-height: var(--line-height);
+    padding-top: 15px;
+}
+
+.shield {
+    float: left;
+    padding-right: 15px;
+}
+
+.shield two {
+    padding-right: 5px;
+}
+
+.table-threeA p {
+    text-indent: 2em;
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>低碳通</title>
+  <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+  <link rel="stylesheet" href="/css/tips.css">
+  <!-- 柱状图 -->
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/data.js"></script>
+  <!-- 饼图 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+</head>
+
+<body>
+  <div class="dakuanjia">
+    <!-- 标题 -->
+    <div class="carousel" id="top">
+      <img class="img3" src="/img/screen15.jpg" alt="">
+      <img class="img3" src="/img/screen24.jpg" alt="">
+      <img class="img3" src="/img/screen26.jpg" alt="">
+      <img class="img3" src="/img/screen27.jpg" alt="">
+      <img class="img3" src="/img/screen28.jpg" alt="">
+      <img class="img3" src="/img/screen29.jpg" alt="">
+      <img class="img3" src="/img/screen32.jpg" alt="">
+      <img class="img3" src="/img/screen31.jpg" alt="">
+      <img class="img3" src="/img/screen30.jpg" alt="">
+      <img class="img3" src="/img/screen33.jpg" alt="">
+      <img class="img3" src="/img/screen34.jpg" alt="">
+    </div>
+    <script>
+      const carousel = document.querySelector('.carousel');
+      const images = document.querySelectorAll('.carousel img');
+      let currentIndex = 0;
+
+      function moveSlide() {
+        // Calculate the new position based on the current index
+        const newPosition = -currentIndex * 100;
+        // Move all images to the new position
+        images.forEach(image => {
+          image.style.transform = `translateX(${newPosition}%)`;
+        });
+      }
+
+      function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= images.length) {
+          currentIndex = 0;
+        }
+        moveSlide();
+      }
+
+      // Initial move to show the first three images
+      moveSlide();
+
+      // Set interval to automatically move to the next slide every 3 seconds
+      setInterval(nextSlide, 3000);
+    </script>
+    <!-- 导航 -->
+    <nav class="nav"></nav>
+
+    <!-- 正文 -->
+    <div class="box_body">
+      <!-- 绿色出行 -->
+      <section id="绿色出行">
+        <div class="box_left">
+          <div class="icon_a">
+            <a href="./tips/green.html" style="text-decoration: none;">
+              <div class="box_icon">
+                <img src="/img/tips/car.png" alt="绿色出行">
+                <strong>
+                  <p>绿色出行</p>
+                </strong>
+              </div>
+            </a>
+          </div>
+          <!-- 排行榜 -->
+          <div class="box_content a1">
+            <div class="content_title1">
+              <h2 style="margin: auto 25px;width: 100%;"><a href="./tips/green.html#section1"
+                  style="text-decoration: none;">碳排放排行榜</a></h2>
+            </div>
+            <div class="box_paihanbang">
+
+              <!-- test -->
+              <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+              <!-- <script language="JavaScript">
+              </script> -->
+              <script src="/js/tips/tips.js"></script>
+              <table id="datatable" style="display: none;">
+                <thead>
+                  <tr>
+                    <th>出行方式</th>
+                    <th>碳排放占比 (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>小汽车</th>
+                    <td>88.44</td>
+                  </tr>
+                  <tr>
+                    <th>地铁</th>
+                    <td>6.49</td>
+                  </tr>
+                  <tr>
+                    <th>公交车</th>
+                    <td>5.06</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+          <!-- 绿色出行方式 -->
+          <div class="box_content a1">
+            <div class="content_title2">
+              <h2 style="margin: auto 25px;width: 100%;"><a href="./tips/green.html#section2"
+                  style="text-decoration: none;">出行方式</a></h2>
+            </div>
+            <div class="box_way" id="main">
+              <!-- 饼状图 -->
+              <script src="/js/tips/chart2.js"></script>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 垃圾分类 -->
+      <section id="垃圾分类">
+        <div class="box_right t2">
+          <div class="icon_a">
+            <a href="./tips/rubbish.html" style="text-decoration: none;">
+              <div class="box_icon"><img src="/img/tips/lajifenl.png" alt="垃圾分类">
+                <strong>
+                  <p>垃圾分类</p>
+                </strong>
+              </div>
+            </a>
+          </div>
+          <div class="box_content">
+            <div class="box_small">
+              <strong>
+                <p><a href="./tips/rubbish.html#section1" style="text-decoration: none;">湿垃圾</a></p>
+              </strong>
+              <div class="icon_small">
+                <img src="/img/tips/detail/rubbish/wet.png" alt="湿垃圾">
+              </div>
+            </div>
+            <div class="box_small">
+              <strong>
+                <p><a href="./tips/rubbish.html#section2" style="text-decoration: none;">干垃圾</a></p>
+              </strong>
+              <div class="icon_small">
+                <img src="/img/tips/detail/rubbish/ganlaji.png" alt="干垃圾">
+              </div>
+            </div>
+          </div>
+          <div class="box_content">
+            <div class="box_small">
+              <strong>
+                <p><a href="./tips/rubbish.html#section3" style="text-decoration: none;">可回收垃圾</a></p>
+              </strong>
+              <div class="icon_small">
+                <img src="/img/tips/detail/rubbish/kehuishou.png" alt="可回收垃圾">
+              </div>
+            </div>
+            <div class="box_small">
+              <strong>
+                <p><a href="./tips/rubbish.html#section4" style="text-decoration: none;">有害垃圾</a></p>
+              </strong>
+              <div class="icon_small">
+                <img src="/img/tips/detail/rubbish/injury.png" alt="有害垃圾">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 废物利用 -->
+      <section id="废物利用">
+        <div class="box_left t3" style="margin-bottom: 100px;">
+          <div class="icon_a">
+            <a href="./tips/salvage.html" style="text-decoration: none;">
+              <div class="box_icon"><img src="/img/tips/protection.png" alt="废物利用">
+                <strong>
+                  <p>废物利用</p>
+                </strong>
+              </div>
+            </a>
+          </div>
+          <div class="box_content fw">
+            <!-- <h2 ><a href="#" style="text-decoration: none;">视频</a></h2> -->
+            <div class="video">
+              <h3 style="text-align: center;padding-bottom: 10px;">废纸的利用</h3>
+              <div class="paper">
+                <div class="v001">
+                  <a href="https://www.bilibili.com/video/BV1Ls4y1d72k/?spm_id_from=333.1245.0.0"
+                    style="text-decoration: none;">
+                    <div class="v_image">
+                      <img class="v_img" src="/img/tips/detail/salvage/salvagepicture/14.png" alt="今天我们来制作一个纸板垃圾桶！">
+                    </div>
+                  </a>
+                  <p class="v_title">
+                    <a href="https://www.bilibili.com/video/BV1Ls4y1d72k/?spm_id_from=333.1245.0.0"
+                      style="text-decoration: none;">今天我们来制作一个纸板垃圾桶！</a>
+                  </p>
+                </div>
+              </div>
+              <p class="more"><a href="./tips/salvage.html#section1" style="text-decoration: none;"
+                  class="iconfont icon-arrow-double-right">查看更多</a></p>
+              <div>
+                <div class="v001">
+                  <a href="https://www.bilibili.com/video/BV1eV4y1u73C/?spm_id_from=333.1245.0.0"
+                    style="text-decoration: none;">
+                    <div class="v_image">
+                      <img class="v_img" src="/img/tips/detail/salvage/salvagepicture/2.png"
+                        alt="变废为宝｜家里的旧纸袋居然有这么多用处～三款旧纸袋改造教程，好用不翻车～">
+                    </div>
+                  </a>
+                  <p class="v_title">
+                    <a href="https://www.bilibili.com/video/BV1eV4y1u73C/?spm_id_from=333.1245.0.0"
+                      style="text-decoration: none;">变废为宝｜家里的旧纸袋居然有这么多用处</a>
+                  </p>
+                </div>
+              </div>
+              <p class="more"><a href="./tips/salvage.html#section1" style="text-decoration: none;"
+                  class="iconfont icon-arrow-double-right">查看更多</a></p>
+            </div>
+          </div>
+          <div class="box_content fw">
+            <div class="video">
+              <h3 style="text-align: center;padding-bottom: 10px;">废瓶的利用</h3>
+              <div class="bottle">
+                <div class="v001">
+                  <a href="https://www.bilibili.com/video/BV1aT411M75g/?spm_id_from=333.1245.0.0"
+                    style="text-decoration: none;">
+                    <div class="v_image">
+                      <img class="v_img" src="/img/tips/detail/salvage/salvagepicture/3.png"
+                        alt="矿泉水瓶也没有被我放过，努力变成手工博主的第？天">
+                    </div>
+                  </a>
+                  <p class="v_title"><a href="https://www.bilibili.com/video/BV1aT411M75g/?spm_id_from=333.1245.0.0"
+                      style="text-decoration: none;">矿泉水瓶也没有被我放过</a></p>
+                </div>
+              </div>
+              <p class="more"><a href="./tips/salvage.html#section1" style="text-decoration: none;"
+                  class="iconfont icon-arrow-double-right">查看更多</a></p>
+              <div>
+                <div class="v001">
+                  <a href="https://www.bilibili.com/video/BV18T4y1f7Nd/?spm_id_from=333.1245.0.0"
+                    style="text-decoration: none;">
+                    <div class="v_image">
+                      <img class="v_img" src="/img/tips/detail/salvage/salvagepicture/4.png" alt="塑料瓶改造水母灯">
+                    </div>
+                  </a>
+                  <p class="v_title"><a href="https://www.bilibili.com/video/BV18T4y1f7Nd/?spm_id_from=333.1245.0.0"
+                      style="text-decoration: none;">塑料瓶改造水母灯</a></p>
+                </div>
+              </div>
+              <p class="more"><a href="./tips/salvage.html#section2" style="text-decoration: none;"
+                  class="iconfont icon-arrow-double-right">查看更多</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 植树 -->
+      <section id="植树">
+        <div class="box_right t4">
+          <div class="icon_a">
+            <a href="./tips/plant.html" style="text-decoration: none;">
+              <div class="box_icon"><img src="/img/tips/fengmtree.png" alt="植树">
+                <strong>
+                  <p>植树</p>
+                </strong>
+              </div>
+            </a>
+          </div>
+          <div class="box_content b1">
+            <h2 style="margin: auto 25px;width: 100%;padding: 30px 10px;">相关报道</h2>
+            <div class="ttt1">
+              <!-- <li>
+                    <a href="https://www.gov.cn/yaowen/liebiao/202404/content_6943360.htm">习近平在参加首都义务植树活动时强调：全民植树增绿 共建美丽中国</a>
+                  </li> -->
+              <li>
+                <a href="http://opinion.people.com.cn/n1/2024/0312/c223228-40194019.html" target="_blank"
+                 >人民网评：植树添新绿，共绘美丽中国</a>
+              </li>
+              <li>
+                <a href="http://politics.people.com.cn/n1/2023/0313/c1001-32643629.html" target="_blank"
+                 >植树节，跟着总书记一起种下绿色的希望</a>
+              </li>
+              <li>
+                <a href="http://cpc.people.com.cn/n1/2022/0312/c164113-32373296.html" target="_blank">多种树 种好树
+                  习近平厚“植”绿色期望</a>
+              </li>
+              <li>
+                <a href="http://opinion.people.com.cn/n1/2020/0316/c1003-31632762.html" target="_blank"
+                 >人民日报人民时评：在春天植下绿色希望</a>
+              </li>
+              <li>
+                <a href="http://finance.people.com.cn/n1/2024/0408/c1004-40211458.html" target="_blank">春来植树添新绿
+                  增厚美丽中国“绿色家底”</a>
+              </li>
+              <li>
+                <a href="https://www.gov.cn/xinwen/2021-04/04/content_5597712.htm" target="_blank">春来植树正当时</a>
+              </li>
+              <li>
+                <a href="https://www.xinhuanet.com/politics/2021-03/12/c_1127201184.htm" target="_blank">植树，用绿色拥抱春天</a>
+              </li>
+            </div>
+          </div>
+          <div class="box_content b2">
+            <h2 style="margin: auto 25px;width: 100%;padding: 30px 10px;"><a href="/html/tips/plant.html">植树小技巧</a>
+            </h2>
+            <div class="cor-wrap">
+              <div class="wrap_s">
+                <a href="/html/tips/plant.html#section1">
+                  <img class="ob-img" src="/img/tips/treepicture/tree3.jpg" alt="最佳种植时间">
+                  <span>最佳种植时间</span>
+                </a>
+              </div>
+              <div class="wrap_s">
+                <a href="/html/tips/plant.html#section2">
+                  <img class="ob-img" src="/img/tips/treepicture/tree1.jpg" alt="树种选择">
+                  <span>树种选择</span>
+              </div>
+              <div class="wrap_s">
+                <a href="/html/tips/plant.html#section3">
+                  <img class="ob-img" src="/img/tips/treepicture/tree2.jpg" alt="种植技巧">
+                  <span>种植技巧</span>
+                </a>
+              </div>
+              <div class="wrap_s">
+                <a href="/html/tips/plant.html#section4">
+                  <img class="ob-img" src="/img/tips/treepicture/tree4.jpg" alt="日常护理">
+                  <span>日常护理</span>
+                </a>
+              </div>
+            </div>
+            <!-- <div class="box001">
+                <div class="t1"><p>最佳种植时间</p></div>
+                <div class="t1"><p>树种选择</p></div>
+                <div class="t1"><p>种植技巧</p></div>
+                <div class="t1"><p>日常护理</p></div>
+                </div> -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="back_button"><a href="#top" class="iconfont icon-arrowTop"></a></div>
+  <footer>
+    <div class="footer"></div>
+  </footer>
+
+  <script>
+    fetch('/html/public.html')
+      .then(res => res.text())
+      .then(res => {
+        console.log(res);
+        //将文本转化为DOM对象
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(res, 'text/html')
+
+        const styles = doc.querySelectorAll('style');
+        styles.forEach(style => {
+          // 插入到 <head>，并避免重复
+          if (!document.querySelector(`style[data-source="public"]`)) {
+            const clonedStyle = style.cloneNode(true);
+            clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+            document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+          }
+        });
+
+        const nav = doc.querySelector('.nav');
+        const footer = doc.querySelector('.footer');
+
+        if (nav) {
+          const targetNav = document.querySelector('.nav');
+          if (targetNav) {
+            targetNav.innerHTML = nav.innerHTML;
+          } else {
+            console.error('加载失败', error);
+          }
+          //document.querySelector('.nav').innerHTML = nav.innerHTML;
+        }
+        if (footer) {
+          const targetFooter = document.querySelector('.footer');
+          if (targetFooter) {
+            targetFooter.innerHTML = footer.innerHTML;
+          } else {
+            console.error('加载失败', error);
+          }
+        }
+        //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+      })
+      .catch(error => {
+        console.error('加载失败', error);
+      });
+  </script>
+</body>
+
+</html>

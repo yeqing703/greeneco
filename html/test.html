@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .w {
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .swiper {
+            height: 10vh;
+            background-color: #000;
+        }
+
+        .header {
+            background-color: #f40;
+            height: 50vh;
+        }
+
+        .nav {
+            background-color: #089;
+            height: 30vh;
+        }
+
+        .cont {
+            background-color: #ddd;
+            height: 40vh;
+        }
+
+        .footer {
+            background-color: #f40;
+            height: 50vh;
+        }
+
+        @media screen and (max-width:750px) {
+            .swiper {
+                display: none;
+            }
+
+            .header {
+                background-color: #ff0;
+                height: 10vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper w">swiper</div>
+    <div class="header w"></div>
+    <div class="nav w"></div>
+    <div class="cont w"></div>
+    <div class="footer w"></div>
+</body>
+
+</html>

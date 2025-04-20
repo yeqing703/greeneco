@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/team/t2.css">
+    <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+    <title>工作分配</title>
+</head>
+
+<body>
+    <div class="top">
+        <div class="carousel">
+            <img class="img3" src="/img/screen23.jpg" alt="">
+            <img class="img3" src="/img/screen1.jpg" alt="">
+            <img class="img3" src="/img/screen2.jpg" alt="">
+            <img class="img3" src="/img/screen31.jpg" alt="">
+            <img class="img3" src="/img/screen4.jpg" alt="">
+            <img class="img3" src="/img/screen5.jpg" alt="">
+            <img class="img3" src="/img/screen6.jpg" alt="">
+            <img class="img3" src="/img/screen7.jpg" alt="">
+            <img class="img3" src="/img/screen19.jpg" alt="">
+            <img class="img3" src="/img/screen9.jpg" alt="">
+            <img class="img3" src="/img/screen12.jpeg" alt="">
+        </div>
+    </div>
+    <div class="t-2">
+        <h1>工作分配</h1>
+        <div class="item1">
+            <h6>叶晴</h6>
+            <p>新闻页面</p>
+            <p>首页</p>
+            <p>页面整合、润色</p>
+            <p>活动页面（碳排放计算）</p>
+        </div>
+        <div class="item2">
+            <h6>欧柏睿</h6>
+            <p>低碳通页面</p>
+            <p>活动页面（知识竞答）</p>
+        </div>
+        <div class="item1">
+            <h6>蔡佩扬</h6>
+            <p>欢迎页面</p>
+            <p>首页</p>
+            <p>科普页面</p>
+            <p>活动页面(日历)</p>
+            <p>留言页面</p>
+            <p>团队介绍页面</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer"></div>
+    </footer>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0;
+
+        function moveSlide() {
+            const newPosition = -currentIndex * 100;
+            images.forEach(image => {
+                image.style.transform = `translateX(${newPosition}%)`;
+            });
+        }
+
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            moveSlide();
+        }
+
+        moveSlide();
+
+        setInterval(nextSlide, 3000);
+    </script>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const footer = doc.querySelector('.footer');
+
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+</body>
+
+</html>

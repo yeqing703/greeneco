@@ -1,0 +1,330 @@
+@import '../css/reset.css';
+@import '../css/community.css';
+
+html {
+  scroll-behavior: auto;
+}
+
+.wrap-body {
+  font-size: 1.6rem;
+  width: 100%;
+  max-width: 1190px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.img3 {
+  object-fit: cover;
+}
+
+.carousel {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.carousel img.img3 {
+  width: 30.33%;
+  height: 100%;
+  display: inline-block;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 商品展示 */
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+  color: #ffffff;
+}
+
+.title {
+  width: 100%;
+  /* background-color: var(--main-color); */
+  background-image: -webkit-linear-gradient(0deg, #007931, #6fb58c);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  /* margin: 60px 0; */
+}
+
+/* .title:hover {
+  transform: translateY(-10px);
+} */
+
+h2 {
+  margin: 30px 0;
+}
+
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.product {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+}
+
+.product_img {
+  height: 250px;
+  background-color: var(--third-color);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_img img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+}
+
+.info {
+  padding: 20px;
+}
+
+.name {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.price {
+  font-weight: bold;
+  color: #f40;
+  margin-bottom: 15px;
+}
+
+.cart {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.cart:hover {
+  background-color: #35502e;
+}
+
+/* 购物车 */
+.cart_button {
+  position: fixed;
+  width: 70px;
+  height: 50px;
+  border-radius: 10px;
+  bottom: 100px;
+  right: 15px;
+  border: none;
+  /* 光标样式 */
+  cursor: pointer;
+  background-color: #333;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart_button .num {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  font-size: 15px;
+  padding: 3px 8px;
+  background-color: var(--main-color);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  color: #ffffff;
+}
+
+.cart_button:hover {
+  background-color: #bddac7;
+}
+
+.cart_box a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+/* 轮播 */
+.top {
+  position: relative;
+  height: 70vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.swiper_shop {
+  list-style: none;
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  z-index: 98;
+}
+
+.swiper_shop img {
+  width: 1190;
+  height: auto;
+  /* object-fit:cover; */
+}
+
+@media(max-width:1190) {
+
+  .swiper_shop,
+  .top {
+    width: 100%;
+    height: 50vh;
+  }
+
+  @keyframes slider {
+    to {
+      transform: translateX(calc(-100%*5));
+    }
+  }
+
+  #page li img {
+    background-size: 100%;
+  }
+
+  #page li img:nth-child(1) {
+    transform: translateZ(-100%/4) rotateX(180deg);
+  }
+
+  #page li img:nth-child(2) {
+    transform: translateY(100%/4) rotateX(-90deg);
+  }
+
+  #page li img:nth-child(3) {
+    transform: translateY(-100%/4) rotateX(90deg);
+  }
+
+  #page li img:nth-child(4) {
+    transform: translateZ(100%/4);
+  }
+}
+
+
+
+/* 移动端 */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 20px;
+  }
+
+  .top{
+    width: 100%;
+    height: 150px;
+}
+.top::before{
+  background-image: url(/img/shop/border.png);
+  background-repeat: no-repeat; 
+    background-size: 80% 80px;
+    background-position: center;
+    height: 150px;
+    content:'二手商城';
+    color: var(--main-color);
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+  .swiper_shop {
+    display: none;
+  }
+
+  .wrap-body {
+    width: 100%;
+    float: none;
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+    /* padding: 0 10px; */
+  }
+
+  .product {
+    border-radius: 5px;
+
+  }
+
+  .product_img {
+    height: 150px;
+    background-color: var(--third-color);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    width: 100%;
+    /* background-color: var(--main-color); */
+    background-image: -webkit-linear-gradient(0deg, #007931, #6fb58c);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin: 60px 0; */
+  }
+
+  .name,.price,.cart{
+    font-size: 14px;
+  }
+
+  h2{
+    font-size: 20px;
+  }
+  
+  dt,
+  dd,
+  .span-txt,
+  .banquan,
+  .name-banquan{
+    font-size: 12px;
+  }
+  
+  .footer{
+    margin-top: 30px;
+  }
+}
+

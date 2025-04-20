@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/newall.css">
+    <link rel="stylesheet" href="/iconfont/iconfont one/iconfont one/iconfont.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--新闻单独-->
+    <div class="carousel">
+        <img class="img3" src="/img/screen14.png" alt="">
+        <img class="img3" src="/img/screen18.jpg" alt="">
+        <img class="img3" src="/img/screen16.jpg" alt="">
+        <img class="img3" src="/img/screen17.jpg" alt="">
+        <img class="img3" src="/img/screen13.jpg" alt="">
+        <img class="img3" src="/img/screen25.jpg" alt="">
+        <img class="img3" src="/img/screen19.jpg" alt="">
+        <img class="img3" src="/img/screen7.jpg" alt="">
+        <img class="img3" src="/img/screen8.jpg" alt="">
+        <img class="img3" src="/img/screen9.jpg" alt="">
+        <img class="img3" src="/img/screen12.jpeg" alt="">
+    </div>
+    </div>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0;
+
+        function moveSlide() {
+            // Calculate the new position based on the current index
+            const newPosition = -currentIndex * 100;
+            // Move all images to the new position
+            images.forEach(image => {
+                image.style.transform = `translateX(${newPosition}%)`;
+            });
+        }
+
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            moveSlide();
+        }
+
+        // Initial move to show the first three images
+        moveSlide();
+
+        // Set interval to automatically move to the next slide every 3 seconds
+        setInterval(nextSlide, 3000);
+    </script>
+    <nav class="nav">
+        <div class="n1">
+            <form id="searchForm" action="/html/search.html" method="GET" target="_blank">
+                <div class="searchfrom">
+                    <div class="seatext"><input type="text" id="searchInput" name="query" placeholder="搜索内容..."></div>
+                    <div class="sub"><button type="submit" class="iconfont icon-sousuo"
+                            style="font-size: 20px;margin-left: 5px;margin-right: 5px;"></button></div>
+                </div>
+            </form>
+            <a href="/html/homepage.html" class="navA" target="_blank">首页</a>
+            <a href="/html/theory/theory.html" class="navA" target="_blank">科普</a>
+            <a href="/html/newall.html" class="navA" target="_blank">新闻</a>
+            <a href="/html/tips.html" class="navA" target="_blank">低碳通</a>
+            <a href="/html/community.html" class="navA" target="_blank">活动</a>
+            <a href="/html/message.html" class="navA" target="_blank">留言</a>
+            <a href="/html/team.html" class="navA" target="_blank">关于我们</a>
+        </div>
+    </nav>
+    <!--视频-->
+    <div class="wrap">
+        <section id="nav1" class="shadown">
+            <div class="box1">
+                <div class="header-one">视频
+                </div>
+                <div class="nav-header">
+                    <ul>
+                        <button onclick="btn()">
+                            <li class="nav-list">
+                                <h2>
+                                    <div></div>
+                                    教育
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                        <button onclick="btnproduct()">
+                            <li class="nav-list">
+                                <h2>
+                                    <div></div>
+                                    科技
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                        <button onclick="btnview()">
+                            <li class="nav-list">
+                                <h2>
+                                    <div></div>
+                                    访谈
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                    </ul>
+                </div>
+                <div class="more">
+                    <a href="/html/new/v_along/video.html" class="iconfont icon-arrow-double-right">查看更多</a>
+                </div>
+            </div>
+            <div class="iframe-container">
+                <!-- 内联框架 -->
+                <iframe id="iframe" src="./new/enduction.html" frameborder="0"></iframe>
+            </div>
+            <script>
+                function btn() {
+                    document.getElementById('iframe').src = "./new/enduction.html";
+                }
+                function btnproduct() {
+                    document.getElementById('iframe').src = "./new/product.html";
+                }
+                function btnview() {
+                    document.getElementById('iframe').src = "./new/interview.html";
+                }
+            </script>
+        </section>
+        <!--文章-->
+        <section id="nav2" class="shadown">
+            <div class="box2">
+                <div class="header-one">文章
+                </div>
+                <div class="nav-header">
+                    <ul>
+                        <button onclick="btnenvironmentA()">
+                            <li class="nav-list">
+                                <h2 style="padding: 65px 55px;">
+                                    <div></div>
+                                    环境新闻
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                        <button onclick="btnactiveA()">
+                            <li class="nav-list">
+                                <h2>
+                                    <div></div>
+                                    环保政策
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                        <button onclick="btnsuriveA()">
+                            <li class="nav-list">
+                                <h2>
+                                    <div></div>
+                                    产品服务
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+
+                    </ul>
+                </div>
+                <div class="more">
+                    <a href="/html/new/n_along/text.html" class="iconfont icon-arrow-double-right">查看更多</a>
+                </div>
+            </div>
+            <div class="iframe-container2">
+                <!-- 内联框架 -->
+                <iframe id="iframe-A" src="./new/environment.html" frameborder="0"></iframe>
+            </div>
+            <script>
+                function btnenvironmentA() {
+                    document.getElementById('iframe-A').src = "./new/environment.html";
+                }
+                function btnactiveA() {
+                    document.getElementById('iframe-A').src = "./new/zhengce new.html";
+                }
+                function btnsuriveA() {
+                    document.getElementById('iframe-A').src = "./new/product new.html";
+                }
+            </script>
+        </section>
+        <!--法律法规-->
+
+        <section id="nav3" class="shadown">
+            <div class="box3">
+                <div class="header-one">法律法规
+                </div>
+                <div class="nav-one">
+                    <ul>
+                        <button onclick="btnenvironmentB()">
+                            <li class="nav-list-b">
+                                <h2>
+                                    <div></div>
+                                    环保法规
+                                    <br>
+                                    <a href="./new/y_along/laws.html" class="iconfont icon-arrow-double-right">查看更多</a>
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                        <button onclick="btnactiveB()">
+                            <li class="nav-list-b">
+                                <h2>
+                                    <div></div>
+                                    质量标准
+                                    <br>
+                                    <a href="./new/y_along/standard.html"
+                                        class="iconfont icon-arrow-double-right">查看更多</a>
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="iframe-container3">
+                <!-- 内联框架 -->
+                <iframe id="iframe-B" src="/html/new/huanbaofagui.html" frameborder="0"></iframe>
+            </div>
+            <script>
+                function btnenvironmentB() {
+                    document.getElementById('iframe-B').src = "/html/new/huanbaofagui.html";
+                }
+                function btnactiveB() {
+                    document.getElementById('iframe-B').src = "/html/new/zhiliangbiaozhun.html";
+                }
+            </script>
+
+        </section>
+        <!--社会组织-->
+        <section id="nav4" class="shadown">
+            <div class="box4">
+                <div class="header-one">社会支持
+                </div>
+                <div class="nav-one">
+                    <ul>
+                        <button onclick="btnenvironment()">
+                            <li class="nav-list-b">
+                                <h2>
+                                    <div></div>
+                                    国内组织
+                                    <br>
+                                    <a href="./new/s_along/social-ch.html"
+                                        class="iconfont icon-arrow-double-right">查看更多</a>
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+                        <button onclick="btnactive()">
+                            <li class="nav-list-b">
+                                <h2>
+                                    <div></div>
+                                    国际组织
+                                    <br>
+                                    <a href="./new/s_along/social.html"
+                                        class="iconfont icon-arrow-double-right">查看更多</a>
+                                    <i></i>
+                                </h2>
+                            </li>
+                        </button>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="iframe-container3">
+                <!-- 内联框架 -->
+                <iframe id="iframe-C" src="./new/guoneizuzhi.html" frameborder="0"></iframe>
+            </div>
+            <script>
+                function btnenvironment() {
+                    document.getElementById('iframe-C').src = "./new/guoneizuzhi.html";
+                }
+                function btnactive() {
+                    document.getElementById('iframe-C').src = "./new/guojizuzhi.html";
+                }
+            </script>
+        </section>
+    </div>
+    <div class="back_button"><a href="#top" class="iconfont icon-arrowTop"></a></div>
+    <footer>
+        <div class="footer"></div>
+    </footer>
+
+    <script>
+        fetch('/html/public.html')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                //将文本转化为DOM对象
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(res, 'text/html')
+
+                const styles = doc.querySelectorAll('style');
+                styles.forEach(style => {
+                    // 插入到 <head>，并避免重复
+                    if (!document.querySelector(`style[data-source="public"]`)) {
+                        const clonedStyle = style.cloneNode(true);
+                        clonedStyle.setAttribute('data-source', 'public'); // 标记来源
+                        document.head.appendChild(clonedStyle);//样式统一放在 <head> 中，确保全局生效
+                    }
+                });
+
+                const nav = doc.querySelector('.nav');
+                const footer = doc.querySelector('.footer');
+
+                if (nav) {
+                    const targetNav = document.querySelector('.nav');
+                    if (targetNav) {
+                        targetNav.innerHTML = nav.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                    //document.querySelector('.nav').innerHTML = nav.innerHTML;
+                }
+                if (footer) {
+                    const targetFooter = document.querySelector('.footer');
+                    if (targetFooter) {
+                        targetFooter.innerHTML = footer.innerHTML;
+                    } else {
+                        console.error('加载失败', error);
+                    }
+                }
+                //document.querySelector('.footer').innerHTML = res//拿到结果赋给页面
+            })
+            .catch(error => {
+                console.error('加载失败', error);
+            });
+    </script>
+</body>
+
+</html>
