@@ -1,3 +1,4 @@
+
 from flask import Flask, request,jsonify ,send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 import random
@@ -31,6 +32,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 def index():
     return render_template("index.html")
 
+@app.route('/<path:page>')
+def render_page(page):
+    try:
+        return render_template(page)
+    except:
+        return "页面不存在", 404
 
 # 调试输出环境变量
 print("当前工作目录:", os.getcwd())
