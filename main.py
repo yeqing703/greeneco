@@ -32,11 +32,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 def index():
     return render_template("index.html")
 
-@app.route('/<path:page>')
+@app.route("/<path:page>")
 def render_page(page):
+    if not page.endswith('.html'):
+        page += '.html'  # 确保 URL 不带扩展名时，自动补充 .html 后缀
     try:
-        return render_template(page)
-    except:
+        return render_template(page)  # 自动加载 html/ 下的页面
+    except Exception as e:
+        print(f"页面加载出错: {e}")
         return "页面不存在", 404
 
 # 调试输出环境变量
