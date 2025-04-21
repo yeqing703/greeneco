@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        fetch("http://127.0.0.1:5000/add_comment", {
+        fetch("/add_comment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ename: ename, content: content })
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function loadComments() {
-    fetch('http://127.0.0.1:5000/comments')
+    fetch('/comments')
         .then(response => response.json())
         .then(data => {
             let msgBox = document.querySelector(".msg-box");
