@@ -29,7 +29,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route("/")
 def index():
-    return render_template("homepage/index.html")
+    return render_template("index.html")
 
 
 # 调试输出环境变量
