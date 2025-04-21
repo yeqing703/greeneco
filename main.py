@@ -32,15 +32,172 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 def index():
     return render_template("index.html")
 
-@app.route("/<path:page>")
-def render_page(page):
-    if not page.endswith('.html'):
-        page += '.html'  # 确保 URL 不带扩展名时，自动补充 .html 后缀
-    try:
-        return render_template(page)  # 自动加载 html/ 下的页面
-    except Exception as e:
-        print(f"页面加载出错: {e}")
-        return "页面不存在", 404
+@app.route("/cart")
+def cart(): return render_template("cart.html")
+
+@app.route("/community")
+def community(): return render_template("community.html")
+
+@app.route("/demo")
+def demo(): return render_template("demo.html")
+
+@app.route("/earth-festival")
+def earth_festival(): return render_template("earth festival.html")
+
+@app.route("/home3")
+def home3(): return render_template("home3.html")
+
+@app.route("/homepage")
+def homepage(): return render_template("homepage.html")
+
+@app.route("/message")
+def message(): return render_template("message.html")
+
+@app.route("/newall")
+def newall(): return render_template("newall.html")
+
+@app.route("/notice")
+def notice(): return render_template("notice.html")
+
+@app.route("/pay")
+def pay(): return render_template("pay.html")
+
+@app.route("/public")
+def public(): return render_template("public.html")
+
+@app.route("/search")
+def search(): return render_template("search.html")
+
+@app.route("/shop")
+def shop(): return render_template("shop.html")
+
+@app.route("/team")
+def team(): return render_template("team.html")
+
+@app.route("/test")
+def test(): return render_template("test.html")
+
+@app.route("/tips")
+def tips(): return render_template("tips.html")
+
+# html/activity
+@app.route("/activity/answer")
+def activity_answer(): return render_template("activity/answer.html")
+
+@app.route("/activity/ask")
+def activity_ask(): return render_template("activity/ask.html")
+
+@app.route("/activity/carbonjs")
+def activity_carbonjs(): return render_template("activity/carbonjs.html")
+
+# html/new/guoji
+@app.route("/new/guoji/hd<int:num>")
+def new_guoji_hd(num): return render_template(f"new/guoji/hd{num}.html")
+
+# html/new/guonei
+@app.route("/new/guonei/nr<int:num>")
+def new_guonei_nr(num): return render_template(f"new/guonei/nr{num}.html")
+
+# html/new/hbfq
+@app.route("/new/hbfq/fg1")
+def new_hbfq_fg1(): return render_template("new/hbfq/fg1.html")
+
+# html/new/hbzcyxd
+@app.route("/new/hbzcyxd/zc<int:num>")
+def new_hbzcyxd_zc(num): return render_template(f"new/hbzcyxd/zc{num}.html")
+
+# html/hjxw
+@app.route("/hjxw/xw<int:num>")
+def hjxw_news(num): return render_template(f"hjxw/xw{num}.html")
+
+# html/kcxxcpvw
+@app.route("/kcxxcpvw/cp<int:num>")
+def cp(num): return render_template(f"kcxxcpvw/cp{num}.html")
+
+@app.route("/kcxxcpvw/cpnews")
+def cpnews(): return render_template("kcxxcpvw/cpnews.html")
+
+@app.route("/kcxxcpvw/hjnews")
+def hjnews(): return render_template("kcxxcpvw/hjnews.html")
+
+@app.route("/kcxxcpvw/text")
+def cptext(): return render_template("kcxxcpvw/text.html")
+
+@app.route("/kcxxcpvw/zcnews")
+def zcnews(): return render_template("kcxxcpvw/zcnews.html")
+
+# html/new/s_along
+@app.route("/new/s_along/social")
+def social(): return render_template("new/s_along/social.html")
+
+@app.route("/new/s_along/social-ch")
+def social_ch(): return render_template("new/s_along/social-ch.html")
+
+# html/new/v_along
+@app.route("/new/v_along/video")
+def video(): return render_template("new/v_along/video.html")
+
+# html/new/y_along
+@app.route("/new/y_along/laws")
+def laws(): return render_template("new/y_along/laws.html")
+
+@app.route("/new/y_along/standard")
+def standard(): return render_template("new/y_along/standard.html")
+
+@app.route("/new/y_along/enduction")
+def enduction(): return render_template("new/y_along/enduction.html")
+
+@app.route("/new/y_along/environment")
+def environment(): return render_template("new/y_along/environment.html")
+
+@app.route("/new/y_along/guojizuzhi")
+def guojizuzhi(): return render_template("new/y_along/guojizuzhi.html")
+
+@app.route("/new/y_along/guoneizuzhi")
+def guoneizuzhi(): return render_template("new/y_along/guoneizuzhi.html")
+
+@app.route("/new/y_along/huanbaofagui")
+def huanbaofagui(): return render_template("new/y_along/huanbaofagui.html")
+
+@app.route("/new/y_along/interview")
+def interview(): return render_template("new/y_along/interview.html")
+
+@app.route("/new/y_along/product")
+def product(): return render_template("new/y_along/product.html")
+
+@app.route("/new/y_along/product-new")
+def product_new(): return render_template("new/y_along/product new.html")
+
+@app.route("/new/y_along/zhengce-new")
+def zhengce_new(): return render_template("new/y_along/zhengce new.html")
+
+@app.route("/new/y_along/zhiliangbiaozhun")
+def zhiliangbiaozhun(): return render_template("new/y_along/zhiliangbiaozhun.html")
+
+# html/team
+@app.route("/team/t<int:num>")
+def team_page(num): return render_template(f"team/t{num}.html")
+
+# html/theory
+@app.route("/theory/home<int:num>")
+def theory_home(num): return render_template(f"theory/home{num}.html")
+
+@app.route("/theory/theory")
+def theory_main(): return render_template("theory/theory.html")
+
+# html/tips
+@app.route("/tips/green")
+def tips_green(): return render_template("tips/green.html")
+
+@app.route("/tips/plant")
+def tips_plant(): return render_template("tips/plant.html")
+
+@app.route("/tips/rubbish")
+def tips_rubbish(): return render_template("tips/rubbish.html")
+
+@app.route("/tips/salvage")
+def tips_salvage(): return render_template("tips/salvage.html")
+
 
 # 调试输出环境变量
 print("当前工作目录:", os.getcwd())
