@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // 发送 POST 请求到 Flask 服务器
-        fetch("http://127.0.0.1:5000/signup", {
+        fetch("/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -92,6 +92,7 @@ body {
     margin-left: auto;
     width: 94%;
     border-radius: 20px;
+    height: 65vh;
     background-color: rgba(236, 251, 247, 0.26);
     backdrop-filter: blur(4px);
     color: #000;
@@ -253,3 +254,13 @@ button {
     z-index: 9999;
 }
 
+#popup-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
